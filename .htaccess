@@ -1,0 +1,5 @@
+Allow from all
+AddType x-mapp-php6 .php
+AddHandler x-mapp-php6 .php
+Options +Indexes
+IndexIgnore *

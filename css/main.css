@@ -1,0 +1,215 @@
+  body{
+    /* font-family: "Roboto", "Lato", "Raleway"; */
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #292b2c;
+    background-color: #fff;
+    font-size: 15px;
+  }
+  h1{
+    /*font-weight: 900;*/
+    line-height: 1.2em;
+  }
+  h1.title{
+    margin:30px;
+
+  }
+  h4{
+
+  }
+  #title{
+    font-size: 50px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+
+  }
+  .container{
+    overflow-x:hidden;
+    width : 100%;
+    min-height: 1000px;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  .click_letter{
+    font-weight: 900;
+  }
+  .legend{
+    text-align: center;
+  }
+  code {
+    white-space: pre;
+  }
+  /*.user_study > div {
+    padding-right: 0px;
+    padding-left: 0px;
+
+  }*/
+  .navbar{
+    border-radius:0px;
+  }
+  .navbar-nav {
+    float:none;
+    margin:0 auto;
+    display: block;
+    text-align: center;
+  }
+
+  .navbar-nav > li {
+    display: inline-block;
+    float:none;
+  }
+  .intro-header {
+    height: 300px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    object-fit: cover;
+
+  }
+  .intro-header {
+/*    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;*/
+
+    /*background: url(../images/teaser/teaser.png) no-repeat center center;*/
+    background: url(../images/teaser/teaser.png);
+    background-size: 100%;
+    background-position-y: -150px;
+    background-repeat: no-repeat;
+  }
+
+ .particles  p {
+    /* width: 500px; */
+    /*text-align: left;*/
+    text-align: justify;
+    margin:auto;
+  }
+  #projects .row{
+    margin-bottom: 30px;
+  }
+
+  section{
+    padding: 0px;
+    /*padding: 20px;*/
+  }
+   video{
+    width: 100%;
+    height: 100%;
+  }
+
+  .centerText {
+    text-align:center;
+  }
+
+  .vSpaceUpSlight {
+    margin-top: 30px;
+  }
+
+  .vSpaceUp {
+    margin-top: 60px;
+  }
+
+  .videoparticipant {
+    width: 80%;
+    padding-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .animations p{
+
+  }
+
+  .animations h3{
+    padding-top: 30px;
+  }
+  .text1{
+     height: 150px;
+     text-align: center; /*justify*/
+  }
+  .text2{
+     height: 100px;
+     text-align: center; /*justify*/
+  }
+  .links{
+  font-size: 15px;
+  border-bottom: solid grey 2px;
+  text-decoration: none;
+  color: grey;
+}
+.links{
+  font-size: 15px;
+  border-bottom: solid grey 2px;
+  text-decoration: none;
+}
+.links:hover{
+
+  text-decoration: none;
+}
+
+
+.footer{
+      width: 100%;
+    background-color: black;
+    height: 100px;
+    position: relative;
+    bottom: 0;
+    margin-top: 100px;
+}
+.headband{
+    background-color: black;
+    color:white;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+.headband span{
+   text-decoration: underline;
+}
+.scenario h3{
+  text-align: center;
+}
+.scenario .linkProjects{
+  text-align: center;
+}
+
+.subTitle{
+  font-size: 21px;
+  padding: 20px;
+}
+.subsubTitle{
+  font-size: 18px;
+  padding: 20px;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+    font-weight: 300;
+    line-height: 1.1;
+    color: inherit;
+}
+
+.examplesOfUse{
+  width: 80%;
+  margin-left: 10%;
+}
+
+
+
+
+
+
+
+#bandeau{
+  background: black;
+  position: fixed;
+  height: 30px;
+  width: 100%;
+  opacity:1;
+  z-index: 1000;
+  padding-top: 3px;
+}
+#mainNav{
+  margin-top: 30px;
+}
+
