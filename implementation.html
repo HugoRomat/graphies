@@ -51,25 +51,112 @@
 
     <section>
       <div class="row">
+        <div class="col-lg-offset-3 col-md-offset-3 col-lg-4">
+            <h3>Overall</h3>
+        </div>
+      </div>
+      <div class="row">
           <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
-            <p>
-              Graphies is a Web-based application, implemented with D3.js and paper.js. 
-<br/>
-The former handles all UI widgets in SVG, as well as many computations (visual mappings, force-directed layout, etc.), while the latter is used to draw the node-link diagram. 
-We draw the diagram using 2D primitives directly in an HTML Canvas, as opposed to manipulating an SVG DOM hierarchy, for the sake of performance. 
-The two UI components are seamlessly integrated using CSS rules and input event redirections</p>
+
+              Graphies is a Web-based application that works under a client-server scheme, implemented with <a href='https://d3js.org/'>D3.js</a> and <a href='http://paperjs.org/'>paper.js</a>.
+              The client is implemented as dynamic web page mostly written in Javascript using ES6. 
+            
+            <br/>
+            D3.js handles all UI widgets in SVG, as well as many computations, while paper.js is used to draw the node-link diagram. 
+            The two UI components are seamlessly integrated using CSS rules and input event redirections</p>
+          </div>
+      </div>
+      
+      <div class="row"><div class="col-lg-offset-3 col-md-offset-3 col-lg-4"><h3>Interface</h3></div></div>
+      
+      <div class="row"><div class="col-lg-offset-4 col-md-offset-4 col-lg-4"> <h4>Widgets</h4> </div></div>
+      <div class="row">
+          <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
+              All UI widgets are developped in SVG for a better integration between the design and the implementation stage.
+              We used d3.js to handle the interaction with all of our SVG elements.
+              The DOM can easily support a large number of visual mapping as those are DOM elements. 
+          </div>
+      </div>     
+      <br/>
+      <div class="row icons">
+          <a href='https://d3js.org/'><div class="col-md-offset-5 col-md-1"><img src="images/icons/d3js.jpg" /></div></a>
+          <a href='https://developer.mozilla.org/fr/docs/Web/SVG'><div class="col-md-1"><img src="images/icons/svg.png" /></div></a>
+      </div>
+
+      <div class="row"><div class="col-lg-offset-4 col-md-offset-4 col-lg-4"> <h4>Diagram</h4> </div></div>
+      <div class="row">
+          <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
+              We draw the diagram using 2D primitives directly in an HTML Canvas, as opposed to manipulating an SVG DOM hierarchy, for the sake of performance. 
+              Paper.js is used to cimplify our use of the canvass primitives.
+              Graphies can easily display 3000 nodes and 3000 links.
+              The SVG layer and the canvas layer powering the diagram are overlaid on top of each.
+          </div>
+
+      </div>   
+
+      <br/>
+      <div class="row">
+          <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
+              Graphies server can process large network (10000 nodes and 50000 links) as those are not displayed in the canvas. From there, users can choose to display subviews from this large network.
+          </div>
+
+      </div>  
+      <br/>
+      <div class="row icons">
+          <a href='http://paperjs.org/'><div class="col-md-offset-5 col-md-1"><img src="images/icons/PaperJS.jpg" /></div></a>
+        </div>
+ 
+
+      <div class="row">
+          <div class="col-lg-offset-3 col-md-offset-3 col-lg-4">
+              <h3>Server Side</h3>
           </div>
         </div>
+      <div class="row">
+          <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
+              On the server side, a set of algorithms written in PHP execute several functions as they are requested by Graphies' web client.
+              Each user will have his own session in order to be able to work on the same plateform in the same time than other users. 
+              Among other tasks, the server component is responsible for 
+              <br/>1) parsing the dataset and collecting data attributes 
+              <br/>2) loading and saving data upon request and 
+              <br/>3) computing the video from the workflow historic. 
+              We store and load all the data under the JSON format. 
+              Communication between server and client is implemented through AJAX methods.
+
+              <br/> <br/>
+              Although eventually it will be be possible to carry out the server-side operations in the browser, there are several advantages in offloading them to an external component. 
+              Devices with low computational power may not handle such operations. 
+              By separating heavy calculation from the interface, we allow users to be in optimal conditions to interact with the interface. 
+              Having all core algorithms in the same place allow us to improve maintainability and to debug easier our tool.
+              IGB current implementation has been tested on Googole Chrome, and Mozilla Firefox.
+              
+          </div>
+      </div>
+      <div class="row icons">
+          <a href='https://www.php.net/'><div class="col-md-offset-5 col-md-2"><img style="width:50%;" src="images/icons/php.png" /></div></a>
+      </div>
+      <div class="row">
+          <div class="col-lg-offset-3 col-md-offset-3 col-lg-4">
+              <h3>Force Layout</h3>
+          </div>
+        </div>
+      <div class="row">
+          <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
+            <p>
+              Graphies uses the <a href='https://github.com/d3/d3-force'>d3.js force layout implementation</a>. This implementation uses quadtrees and the Barnes–Hut approximation.
+            </p>
+          </div>
+      </div>
 
 
     <br>
     <br>
 
     <div class="row icons">
-      <div class="col-md-offset-4 col-md-1"><img src="images/icons/d3js.jpg" /></div>
-      <div class="col-md-1"><img src="images/icons/PaperJS.jpg" /></div>
-      <div class="col-md-1"><img src="images/icons/ts.png" /></div>
-      <div class="col-md-1"><img src="images/icons/webpack.png" /></div>
+      <!-- <a href='https://d3js.org/'><div class="col-md-offset-4 col-md-1"><img src="images/icons/d3js.jpg" /></div></a>
+      <a href='http://paperjs.org/'><div class="col-md-1"><img src="images/icons/PaperJS.jpg" /></div></a> -->
+      <a href='http://www.typescriptlang.org/'><div class="col-md-offset-5 col-md-1"><img src="images/icons/ts.png" /></div></a>
+      <a href='https://webpack.js.org/'><div class="col-md-1"><img src="images/icons/webpack.png" /></div></a>
     </div>
 
 

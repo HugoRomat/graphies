@@ -18,6 +18,10 @@
   }
   .icons img{
     width: 70%;
+    text-align: center;
+  }
+  .icons div{
+    text-align: center;
   }
   h4{
 
