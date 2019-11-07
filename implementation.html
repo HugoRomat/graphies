@@ -8,15 +8,20 @@
  <link href="https://fonts.googleapis.com/css?family=Roboto|Lato|Raleway" rel="stylesheet">
  <title>Graphies</title>
  <style type="text/css">
+.code {
+    font-family: monospace;
+}
 
-
+li {
+        font-size:90%;
+}
 
 </style>
 </head>
 
 <header>
   <div id='bandeau'>Optimized for Chrome</div>
-  
+
 </header>
 <body>
 
@@ -52,61 +57,45 @@
     <section>
       <div class="row">
         <div class="col-lg-offset-3 col-md-offset-3 col-lg-4">
-            <h3>Overall</h3>
         </div>
       </div>
       <div class="row">
           <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
+              <p>Graphies is a Web-based application. The client is implemented as a dynamic web page essentially written in Javascript using ES6. It has been tested primarily with <a href="https://www.google.com/chrome/">Google Chrome</a> and <a href="https://www.mozilla.org/en-US/firefox/">Mozilla Firefox</a>.</p>
 
-              Graphies is a Web-based application that works under a client-server scheme, implemented with <a href='https://d3js.org/'>D3.js</a> and <a href='http://paperjs.org/'>paper.js</a>.
-              The client is implemented as dynamic web page mostly written in Javascript using ES6. 
-            
-            <br/>
-            D3.js handles all UI widgets in SVG, as well as many computations, while paper.js is used to draw the node-link diagram. 
-            The two UI components are seamlessly integrated using CSS rules and input event redirections</p>
+              <p>The UI relies on <a href='https://d3js.org/'>d3.js</a> and <a href='http://paperjs.org/'>paper.js</a>. d3.js handles all UI widgets in an <span class="code">&lt;svg&gt;</span> element and computes the nodes' layout; paper.js handles the drawing of the network's nodes and links in a <span class="code">&lt;canvas&gt;</span> element. The two UI components (<span class="code">&lt;svg&gt;</span> and <span class="code">&lt;canvas&gt;</span>) are seamlessly integrated (overlaid) using CSS rules and input event redirection.</p>
           </div>
       </div>
-      
-      <div class="row"><div class="col-lg-offset-3 col-md-offset-3 col-lg-4"><h3>Interface</h3></div></div>
-      
-      <div class="row"><div class="col-lg-offset-4 col-md-offset-4 col-lg-4"> <h4>Widgets</h4> </div></div>
+
       <div class="row">
-          <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
-              All UI widgets are developped in SVG for a better integration between the design and the implementation stage.
-              We used d3.js to handle the interaction with all of our SVG elements.
-              The DOM can easily support a large number of visual mapping as those are DOM elements. 
+          <div class="col-lg-offset-3 col-md-offset-3 col-lg-4">
+              <h3>Server Side</h3>
           </div>
-      </div>     
-      <br/>
-      <div class="row icons">
-          <a href='https://d3js.org/'><div class="col-md-offset-5 col-md-1"><img src="images/icons/d3js.jpg" /></div></a>
-          <a href='https://developer.mozilla.org/fr/docs/Web/SVG'><div class="col-md-1"><img src="images/icons/svg.png" /></div></a>
-      </div>
-
-      <div class="row"><div class="col-lg-offset-4 col-md-offset-4 col-lg-4"> <h4>Diagram</h4> </div></div>
-      <div class="row">
-          <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
-              We draw the diagram using 2D primitives directly in an HTML Canvas, as opposed to manipulating an SVG DOM hierarchy, for the sake of performance. 
-              Paper.js is used to cimplify our use of the canvass primitives.
-              Graphies can easily display 3000 nodes and 3000 links.
-              The SVG layer and the canvas layer powering the diagram are overlaid on top of each.
-          </div>
-
-      </div>   
-
-      <br/>
-      <div class="row">
-          <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
-              Graphies server can process large network (10000 nodes and 50000 links) as those are not displayed in the canvas. From there, users can choose to display subviews from this large network.
-          </div>
-
-      </div>  
-      <br/>
-      <div class="row icons">
-          <a href='http://paperjs.org/'><div class="col-md-offset-5 col-md-1"><img src="images/icons/PaperJS.jpg" /></div></a>
         </div>
- 
+      <div class="row">
+          <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
+              <p>The server side (implemented in <a href='https://www.php.net/'>PHP</a>) is in charge of:</p>
+              <ul>
+                  <li>parsing datasets, processing data attributes and serializing the resulting structure in JSON (to be sent to the client for display);</li>
+                  <li>managing individual user sessions (saving &amp; restoring the workspace);</li>
+                  <li>generating MPEG-4 videos by interpolating between the keyframes selected by users in the history to create an animated diagram.</li>
+              </ul>
 
+              <p>Communication between the server and client sides is handled through asynchronous calls (AJAX). Although most server-side operations could actually be handled client-side, offloading them to the server has several advantages: it enables Graphies to run on devices with modest computational power while keeping the UI responsive; it enables users to load much larger networks than what can reasonably be displayed and populate the diagram with elements of interest by filtering items <em>a priori</em> from the meta-graph; the code modularity eases maintenance and debugging.</p>
+          </div>
+      </div>
+
+
+      <div class="row"><div class="col-lg-offset-3 col-md-offset-3 col-lg-4"><h3>Client Side (UI)</h3></div></div>
+
+      <div class="row"><div class="col-lg-offset-3 col-md-offset-3 col-lg-4"> <h4>Node-Link Diagram</h4> </div></div>
+      <div class="row">
+          <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
+              <p>We draw the node-link diagram using low-level 2D primitves directly in an HTML canvas instead of managing an SVG DOM hierarchy in order to improve perfomance (frame rate, memory consumption). The paper.js API is used to simplify the management of vector graphics drawn on the <span class="code">&lt;canvas&gt;</span> element.</p>
+
+              <p>While higher performance could have been achieved by using WebGL instead of canvas 2D primitives (at the cost of a more complex code base), Graphies is already able to handle diagrams that feature 3000 nodes and 3000 links (*), which we consider a resonable limit in the context of expressive node-link diagrams authored primarily for communication purposes.</p>
+
+<<<<<<< HEAD
       <div class="row">
           <div class="col-lg-offset-3 col-md-offset-3 col-lg-4">
               <h3>Server Side</h3>
@@ -130,33 +119,39 @@
               Having all core algorithms in the same place allow us to improve maintainability and to debug easier our tool.
               Graphies current implementation has been tested on Google Chrome, and Mozilla Firefox.
               
+=======
+              <p>(*) As mentioned earlier, the input datasets on the server side can be larger (an order of magnitude).</p>
+
+              <p>
+                For graph layout, Graphies uses <a href='https://github.com/d3/d3-force'>d3.js' force layout implementation</a>, based on the Barnes-Hut approximation and quadtrees.
+              </p>
+>>>>>>> 5c401938a1535adb69c42dbe8986f25d7450e896
           </div>
+
       </div>
-      <div class="row icons">
-          <a href='https://www.php.net/'><div class="col-md-offset-5 col-md-2"><img style="width:50%;" src="images/icons/php.png" /></div></a>
-      </div>
-      <div class="row">
-          <div class="col-lg-offset-3 col-md-offset-3 col-lg-4">
-              <h3>Force Layout</h3>
-          </div>
-        </div>
+
+      <div class="row"><div class="col-lg-offset-3 col-md-offset-3 col-lg-4"> <h4>Widgets</h4> </div></div>
       <div class="row">
           <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
-            <p>
-              Graphies uses the <a href='https://github.com/d3/d3-force'>d3.js force layout implementation</a>. This implementation uses quadtrees and the Barnes–Hut approximation.
-            </p>
+              <p>UI controls (menu bar, visual mapping widgets, history timeline) are far less numerous than nodes and links in the diagram. To simplify the code, these widgets are managed with D3 (input event handling included) in an <span class="code">&lt;svg&gt;</span> element that is spatially-aligned with the diagram's <span class="code">&lt;canvas&gt;</span> element in the HTML DOM.</p>
           </div>
       </div>
 
+      <!-- <div class="row icons">
+          <a href='https://d3js.org/'><div class="col-md-offset-5 col-md-1"><img src="images/icons/d3js.jpg" /></div></a>
+          <a href='https://developer.mozilla.org/fr/docs/Web/SVG'><div class="col-md-1"><img src="images/icons/svg.png" /></div></a>
+      </div> -->
 
-    <br>
-    <br>
+
+      <!-- <div class="row icons">
+          <a href='https://www.php.net/'><div class="col-md-offset-5 col-md-2"><img style="width:50%;" src="images/icons/php.png" /></div></a>
+      </div> -->
 
     <div class="row icons">
       <!-- <a href='https://d3js.org/'><div class="col-md-offset-4 col-md-1"><img src="images/icons/d3js.jpg" /></div></a>
       <a href='http://paperjs.org/'><div class="col-md-1"><img src="images/icons/PaperJS.jpg" /></div></a> -->
-      <a href='http://www.typescriptlang.org/'><div class="col-md-offset-5 col-md-1"><img src="images/icons/ts.png" /></div></a>
-      <a href='https://webpack.js.org/'><div class="col-md-1"><img src="images/icons/webpack.png" /></div></a>
+      <!-- <a href='http://www.typescriptlang.org/'><div class="col-md-offset-5 col-md-1"><img src="images/icons/ts.png" /></div></a>
+      <a href='https://webpack.js.org/'><div class="col-md-1"><img src="images/icons/webpack.png" /></div></a> -->
     </div>
 
 
@@ -166,7 +161,7 @@
 
 
 
-    
+
 
               </div>
               <div class="footer">
